@@ -7,7 +7,8 @@ from utils import (
     compute_deviation,
     compute_trend,
     shock_score,
-    duration_penalty
+    duration_penalty,
+    questionnaire_score
 )
 
 app = FastAPI()
@@ -57,9 +58,9 @@ def predict(data: Data):
     trend = compute_trend(history_vectors)
     shock = shock_score(sample, baseline)
     duration = duration_penalty(history_records, baseline)
-
+    q_score = questionnaire_score(sample)
     # ---------- FINAL ----------
-    score = final_score(anomaly, deviation, trend, shock, duration)
+    score = final_score(anomaly, deviation, trend, shock, duration, q_score)
     status = get_status(score)
 
     return {

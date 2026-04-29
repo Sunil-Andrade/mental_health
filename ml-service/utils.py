@@ -1,5 +1,11 @@
 import numpy as np
 
+
+
+def questionnaire_score(sample):
+    q = sample[:10]  # q1–q10
+    return sum(q) / 10 
+
 # ---------- FEATURE EXTRACTION ----------
 def extract_features(record):
     return [

@@ -23,13 +23,14 @@ class UserModel:
 
 
 # ---------- FINAL SCORE ----------
-def final_score(anomaly, deviation, trend, shock, duration):
+def final_score(anomaly, deviation, trend, shock, duration,q_score):
     return (
         (-anomaly * 4) +
         (deviation * 1.0) +
         (trend * 2) +
         shock +
-        duration
+        duration +
+        (q_score * 5)   # 🔥 strong signal
     )
 
 

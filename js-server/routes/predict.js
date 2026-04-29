@@ -7,6 +7,8 @@ router.post("/", async (req, res) => {
     try {
         const data = req.body;
 
+        console.log("requested")
+
         // 1. Save current data
         await UserData.create(data);
 
