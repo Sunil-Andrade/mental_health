@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const ML_URL = "http://127.0.0.1:8000/predict";
+const ML_URL = "http://13.232.136.66:8000/predict";
 
 async function getPrediction(user_id, history, current) {
     const response = await axios.post(ML_URL, {

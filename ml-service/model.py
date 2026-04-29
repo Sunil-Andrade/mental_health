@@ -20,23 +20,24 @@ class UserModel:
         sample_scaled = self.scaler.transform(sample)
 
         return self.model.decision_function(sample_scaled)[0]
-    
-    
 
 
-def final_score(anomaly, deviation, trend):
+# ---------- FINAL SCORE ----------
+def final_score(anomaly, deviation, trend, shock, duration):
     return (
         (-anomaly * 4) +
-        (deviation * 1) +
-        (trend * 2)
-        
+        (deviation * 1.0) +
+        (trend * 2) +
+        shock +
+        duration
     )
 
 
+# ---------- STATUS ----------
 def get_status(score):
-    if score < 5:
+    if score < 8:
         return "Stable"
-    elif score < 15:
+    elif score < 18:
         return "Slight Change"
     else:
         return "Needs Attention"
